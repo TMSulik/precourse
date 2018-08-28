@@ -1,0 +1,58 @@
+Recursion
+
+1. Replace stringifyJSON with your own function in src/stringifyJSON.js, and make the specs pass.
+—Stringify means to change a JS object into a string of characters.
+—There are certain things, like undefined, that do not get stringified. 
+—There must be some way to deal with escape characters like backslash, or characters used for something other than characters in JS objects, like commas, quotation marks, and braces.
+
+JSON does not stringily functions; it strips them off.
+let foo = { a: 2, b: function() {} };
+JSON.stringify(foo);
+// "{ "a": 2 }"
+[Even the b key is deleted.]
+
+let foo = { b: foo };
+JSON.stringify(foo);
+// Uncaught TypeError:
+
+let foo = { b: undefined };
+JSON.stringify(foo);
+// {}
+
+let foo = [Symbol(), undefined, function(){}, 'ok']
+JSON.stringify(foo);
+// "[null,null,null,'ok']"
+[inside an array, non-stringifiable objects are handled differently.]
+Non-stringifiable fields get replaced with null in arrays and dropped in objects.
+
+2. Implement getElementsByClassName with your own function in src/getElementsByClassName.js, and make the specs pass.
+
+You should use: 
+ 	document.body
+	element.childNodes
+	element.classList
+
+Advanced
+
+Our advanced content is intended to throw you in over your head, requiring you to solve problems with very little support or oversight, much like you would as a mid or senior level engineer. The following problem is no exception, and you may have to do a fair amount of work to get enough context to get started on the problem itself.
+
+3. Replace parseJSON with your own function in src/parseJSON.js, and make the specs pass.
+—Parse means to reverse stringify. You take a string of characters and have the compiler recognize it as JS. 
+ 
+Use a recursive descent parser.
+	
+Resources:
+One of Hack Reactor's amazing graduates, Ron Fenolio, wrote a fabulous blog post after wrestling with this very prompt
+
+Note: 
+This is a lot of work, and you should expect (and look forward) to bumping up against several conceptual hurdles
+
+Stringifiable objects
+Number
+Null
+Boolean
+String
+Empty array
+
+
+
